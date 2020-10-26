@@ -7,6 +7,7 @@ import { public_key } from './public_key'
 
 let url = 'http://gateway.marvel.com/v1/public/'
 //To bypass cors, from https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
+//The result will be blocked every time otherwise.
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 
@@ -24,6 +25,7 @@ let special_case_a_limit = 80
     //else
         //return full list of characters (concatentated)
 
+//Custom hook for character query
 export function useGetCharacters(starts_with){
     //outgoing state
     const [loading, setLoading] = useState(true);
@@ -31,9 +33,6 @@ export function useGetCharacters(starts_with){
     const [attrib, setAttrib] = useState("");
     const [error, setError] = useState(null);
     
-    //internal
-    const [resultset, setResultSet] = useState(['test']);
-
     useEffect(() => {
         setLoading(true);
         let starts_with_a = false;
@@ -52,70 +51,69 @@ export function useGetCharacters(starts_with){
         }
 
         //loop until all characters under the given letter are found
-        while((total-retrieved) > 0){
-            //assemble query
-            let query = 'characters';
-            //if the query is 'a', include all with special characters before it. therefore, no modification to query
-            if(starts_with_a){
-                query += '&limit='+special_case_a_limit.toString();
-                //query += '&offset='+retrieved.toString();
-            }
-            else{
-                query += '?nameStartsWith='+starting_argument;
-                query += '&limit='+limit.toString();
-                query += '&offset='+retrieved.toString();
-            }
 
-            query += '&apikey='+public_key;
-
-            //const Encoded_URL = encodeURI(url+query);
-            let getParam = {method: "GET"};
-            let head = { mode: 'no-cors'}
-            getParam.headers = head;
-
-            fetch(proxyurl+url+query, getParam)
-            .then(function(response) {
-                if (response.ok) {
-                    return response.json();
-                    //return response.toString();
-                }
-                throw new Error("Network response was not ok.")
-            })
-            .then(function(result) {
-                //marvel attribution text (required)
-                setAttrib(result['attributionText']);
-                console.log(result['attributionText'])
-                //update retrieved and total values (for loop)
-                if(starts_with_a){
-                    total = 0;
-                }
-                else{
-                    retrieved += result.data.count;
-                    console.log(retrieved);
-                    total = result.data.total;
-                    console.log(total);
-                }
-                //concat into resulting array of json objects
-                //console.log(result.data.results);
-                let combined = resultset;
-                combined.concat(result.data.results)
-                setResultSet(combined);
-                //result_set.concat(result.data.results);
-            })
-            .catch(function(error) {
-                console.log("There has been a problem with your fetch operation: ",error.message);
-                setError(error)
-                setLoading(false)
-            });
-
-
-            break;
-
+        //assemble query
+        let query = 'characters';
+        //if the query is 'a', include all with special characters before it. therefore, no modification to query
+        if(starts_with_a){
+            query += '&limit='+special_case_a_limit.toString();
+            //query += '&offset='+retrieved.toString();
         }
-        //set the resultset
-        console.log(resultset)
-        setCharlist(resultset);
-        setLoading(false);
+        else{
+            query += '?nameStartsWith='+starting_argument;
+            query += '&limit='+limit.toString();
+            query += '&offset='+retrieved.toString();
+        }
+
+        query += '&apikey='+public_key;
+
+        //const Encoded_URL = encodeURI(url+query);
+        let getParam = {method: "GET"};
+        // let head = { mode: 'no-cors'}
+        // getParam.headers = head;
+
+        fetch(proxyurl+url+query, getParam)
+        .then(function(response) {
+            if (response.ok) {
+                return response.json();
+                //return response.toString();
+            }
+            throw new Error("Network response was not ok.")
+        })
+        .then(function(result) {
+            //marvel attribution text (required)
+            setAttrib(result['attributionText']);
+            //console.log(result['attributionText'])
+            //update retrieved and total values (for loop)
+            // if(starts_with_a){
+            //     total = 0;
+            // }
+            // else{
+            //     retrieved += result.data.count;
+            //     //console.log(retrieved);
+            //     total = result.data.total;
+            //     //console.log(total);
+            // }
+            // //concat into resulting array of json objects
+            //console.log(result.data.results);
+            // let combined = resultset;
+            // combined.concat(result.data.results)
+            setError(result.data.total)
+            // setResultSet(combined);
+            setCharlist(result.data.results)
+            //console.log(charlist);
+            //console.log(result.data.results)
+            //result_set.concat(result.data.results);
+            setLoading(false);
+        })
+        .catch(function(error) {
+            console.log("There has been a problem with your fetch operation: ",error.message);
+            setError(error)
+            setLoading(false)
+        });
+
+        //setCharlist(resultset);
+        
     },
     [starts_with]);
     return {

@@ -28,6 +28,7 @@ class App extends Component{
       other: '',
 
       results: '',
+
     }
   }
 
@@ -36,13 +37,15 @@ class App extends Component{
   render() {
     return(
       <div className="App">
+        <div className="margins">
+          <div className="selection-pane">
+            selection pane
+            <Character_Browser/>
+          </div>
 
-        <div className="selection-pane">
-          <Character_Browser/>
-        </div>
-
-        <div className="chosen-characters">
-          
+          <div className="chosen-characters">
+            chosen characters
+          </div>
         </div>
 
         <footer>

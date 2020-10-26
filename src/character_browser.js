@@ -6,18 +6,21 @@ export default function Character_Browser(){
     function letter_list_entry(item, index){
         return(
             <tr className='letter-list-row' key={index}>
-                <div>{item}</div>
+                {item}
             </tr>
         )
     }
 
     function Entered_Letter_List(start_with){
-        let {loading, character_list, attribution, error} = useGetCharacters(start_with);
+        const {loading, character_list, attribution, error} = useGetCharacters(start_with);
         // let character_list = ['test1', 'test2', 'test3'];
         // let error = false;
         // let loading = false;
-        console.log(character_list);
-        // console.log(attribution);
+        let arr = ['arrtest'].concat(character_list)
+        //console.log();
+        console.log(attribution);
+        console.log(loading)
+        console.log(error)
 
         if(error){
             return(
@@ -34,11 +37,11 @@ export default function Character_Browser(){
                 </div>
             )
         }
-        else if(character_list != undefined){
+        else if(arr != undefined){
             return(
                 <table className='letter-list-table'>
                     <tbody className='letter-list-body'>
-                        {character_list.toString()}
+                        {arr.map(letter_list_entry)}
                         {attribution}
                     </tbody>
                 </table>
@@ -53,7 +56,7 @@ export default function Character_Browser(){
 
     return(
         <div className='character-browser'>
-            <Entered_Letter_List starts_with='b'/>
+            <Entered_Letter_List starts_with='v'/>
         </div>
     )
 }
