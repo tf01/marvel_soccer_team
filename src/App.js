@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
 
-function App() {
+function App_default() {
   return (
     <div className="App">
       <header className="App-header">
@@ -20,6 +21,39 @@ function App() {
       </header>
     </div>
   );
+}
+
+function long_list(){
+  return(
+    <table>
+
+    </table>
+  )
+}
+
+class App extends Component{
+  //Main component that the page is built from
+   
+  constructor(props){
+    super(props);
+    //Main state for the entire app
+    this.state = {
+      
+    }
+  }
+
+  //No need for routing in this project, 
+  render() {
+    return(
+      <div className="App">
+
+
+        <footer>
+          Data provided by Marvel. © 2014 Marvel
+        </footer>
+      </div>
+    )
+  }
 }
 
 export default App;

@@ -89,6 +89,7 @@ React app that allows the user to create a 5-aside soccer team from Marvel Comic
 - Basically, show blank team at top/side of page (when scrolled down)
 - Show list of characters and be able to search by name
 - List headings should toggle between numbered order, alphabetical, and reverse-alphabetical
+- Include save to file, maybe simple social media integration
 
 - See design sketches:
   - Desktop (v0.1)
@@ -96,3 +97,4 @@ React app that allows the user to create a 5-aside soccer team from Marvel Comic
 
   - Mobile (v0.1)
 <img src="design_images/marvel_soccer_team_phone.png">
+
