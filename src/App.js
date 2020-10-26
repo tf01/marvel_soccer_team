@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 
+import Character_Browser from './character_browser'
+
 
 function long_list(){
   return(
@@ -11,13 +13,6 @@ function long_list(){
   )
 }
 
-function Display_res(){
-  return(
-    <div className='results'>
-      {this.state['results']}
-    </div>
-  )
-}
 
 class App extends Component{
   //Main component that the page is built from
@@ -36,12 +31,6 @@ class App extends Component{
     }
   }
 
-  recieved_char_list(response){
-    this.setState({
-      results: response,
-    })
-  }
-
 
   //No need for routing in this project, 
   render() {
@@ -49,12 +38,11 @@ class App extends Component{
       <div className="App">
 
         <div className="selection-pane">
-          second
-          <Display_res response="test"/>
+          <Character_Browser/>
         </div>
 
         <div className="chosen-characters">
-        
+          
         </div>
 
         <footer>
