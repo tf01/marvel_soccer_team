@@ -1,3 +1,36 @@
+# marvel_soccer_team
+React app that allows the user to create a 5-aside soccer team from Marvel Comics characters.
+
+# API Key
+- Ensure that a file called `public_key.js` is created and placed in the src folder, with the format:
+```
+export const public_key = 'public-key-here';
+```
+- Only the one line is necessary for the system to work. If you'd like my public key for the API, let me know.
+
+# Ideas
+- Basic, keep simple, don't overthink
+- Single Page Application
+- Team Members
+  - 1 Goalkeeper (GK)
+  - 1 Striker (ST)
+  - 1 Midfielder (MD)
+  - 1 Defender (DF)
+  - 1 ST, MD, or DF
+- Basically, show blank team at top/side of page (when scrolled down)
+- Show list of characters and be able to search by name
+- List headings should toggle between numbered order, alphabetical, and reverse-alphabetical
+- Include save to file, maybe simple social media integration
+
+- See design sketches:
+  - Desktop (v0.1)
+<img src="design_images/marvel_soccer_team_page.png">
+
+  - Mobile (v0.1)
+<img src="design_images/marvel_soccer_team_phone.png">
+
+- 
+
 ### Default create-react-app readme
 <details>
 
@@ -73,28 +106,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 </details>
-
-# marvel_soccer_team
-React app that allows the user to create a 5-aside soccer team from Marvel Comics characters.
-
-# Ideas
-- Basic, keep simple, don't overthink
-- Single Page Application
-- Team Members
-  - 1 Goalkeeper (GK)
-  - 1 Striker (ST)
-  - 1 Midfielder (MD)
-  - 1 Defender (DF)
-  - 1 ST, MD, or DF
-- Basically, show blank team at top/side of page (when scrolled down)
-- Show list of characters and be able to search by name
-- List headings should toggle between numbered order, alphabetical, and reverse-alphabetical
-- Include save to file, maybe simple social media integration
-
-- See design sketches:
-  - Desktop (v0.1)
-<img src="design_images/marvel_soccer_team_page.png">
-
-  - Mobile (v0.1)
-<img src="design_images/marvel_soccer_team_phone.png">
 

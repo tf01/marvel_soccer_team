@@ -1,4 +1,4 @@
-import {useState, useEffect, useCallback} from 'react'
+import {useState, useEffect} from 'react'
 //Importing public key from file.
 //File format is:
 //export const public_key = 'key-here';
@@ -56,7 +56,7 @@ export function useGetCharacters(starts_with){
         let query = 'characters';
         //if the query is 'a', include all with special characters before it. therefore, no modification to query
         if(starts_with_a){
-            query += '&limit='+special_case_a_limit.toString();
+            query += '?limit=80';
             //query += '&offset='+retrieved.toString();
         }
         else{
@@ -120,6 +120,71 @@ export function useGetCharacters(starts_with){
         loading,
         charlist,
         attrib,
+        error,
+    };
+}
+
+export function useGetCharacters_JSON_only(starts_with){
+    //outgoing state
+    const [loading, setLoading] = useState(true);
+    const [result, setResult] = useState([]);
+    const [error, setError] = useState(null);
+    
+    useEffect(() => {
+        setLoading(true);
+        let starts_with_a = false;
+
+        let retrieved = 0;
+        let limit  = 100;
+        let total = 1;
+
+        let starting_argument = starts_with['starts_with']
+        if(starting_argument === '0-A'){
+            starts_with_a = true;
+        }
+        //assemble query
+        let query = 'characters';
+        //if the query is 'a', include all with special characters before it. therefore, no modification to query
+        if(starts_with_a){
+            query += '?limit=80';
+            //query += '&offset='+retrieved.toString();
+        }
+        else{
+            query += '?nameStartsWith='+starting_argument;
+            query += '&limit='+limit.toString();
+            query += '&offset='+retrieved.toString();
+        }
+
+        query += '&apikey='+public_key;
+
+        let getParam = {method: "GET"};
+
+        fetch(proxyurl+url+query, getParam)
+        .then(function(response) {
+            if (response.ok) {
+                return response.json();
+                //return response.toString();
+            }
+            throw new Error("Network response was not ok.")
+        })
+        .then(function(result) {
+            //marvel attribution text (required)
+            setResult(result);
+            setLoading(false);
+        })
+        .catch(function(error) {
+            console.log("There has been a problem with your fetch operation: ",error.message);
+            setError(error)
+            setLoading(false)
+        });
+
+        //setCharlist(resultset);
+        
+    },
+    [starts_with]);
+    return {
+        loading,
+        result,
         error,
     };
 }

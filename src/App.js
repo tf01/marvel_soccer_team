@@ -28,8 +28,12 @@ class App extends Component{
       other: '',
 
       results: '',
-
+      attribution: '',
     }
+  }
+
+  gotAttribution(attr){
+    this.setState({attribution: attr});
   }
 
 
@@ -38,18 +42,18 @@ class App extends Component{
     return(
       <div className="App">
         <div className="margins">
+          <div className="chosen-characters">
+            chosen characters
+          </div>
+
           <div className="selection-pane">
             selection pane
             <Character_Browser/>
           </div>
-
-          <div className="chosen-characters">
-            chosen characters
-          </div>
         </div>
 
         <footer>
-          {/* Use attributionText/HTML for this Data provided by Marvel. © 2014 Marvel */}
+          test marvel attribution
         </footer>
       </div>
     )
