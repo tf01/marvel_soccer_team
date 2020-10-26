@@ -43,7 +43,7 @@ export default function Character_Browser(){
         return(
             <tr className='letter-list-row' key={index}>
                 {item.name}
-                <img src={item.thumbnail.path+'.'+item.thumbnail.extension}/>
+                <img src={item.thumbnail.path+'.'+item.thumbnail.extension} width='75' height='75'/>
             </tr>
         )
     }
@@ -95,7 +95,7 @@ export default function Character_Browser(){
 
     function initial_selection_pane_item(item, index){
         return(
-            <tr className='selection-pane-table'>
+            <tr className='selection-pane-item'>
                 <button name={index} className='selection-pane-button' onClick={handleSelectionPaneClicked}>
                     {item}
                 </button>
