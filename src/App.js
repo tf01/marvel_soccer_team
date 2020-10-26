@@ -37,7 +37,19 @@ class App extends Component{
   }
 
 
-  //No need for routing in this project, 
+  //No need for routing in this project
+  /*
+    Need to finalise layout and get some flexboxes up and running.
+    Also, work out what state is going to be passed up here, and how 
+    conflicts are going to work.
+
+    Also, think about visuals a little bit.
+
+    Need to rework fetches as well, I want to be able to get the entire
+    list of characters at any given name, not just 100.
+
+    A requirement is that any character is able to be selected.
+   */
   render() {
     return(
       <div className="App">
