@@ -15,48 +15,50 @@ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 export function useGetCharacters_JSON_only(starts_with, page){
     //outgoing state
     const [loading, setLoading] = useState(true);
-    const [result, setResult] = useState([]);
+    const [result, setResult] = useState(null);
     const [error, setError] = useState(null);
     
     useEffect(() => {
         setLoading(true);
-        let starts_with_a = false;
+        //console.log(starts_with);
+        if(starts_with !== ''){
+            let starting_argument = starts_with;
 
-        let starting_argument = starts_with['starts_with'];
+            //assemble query
+            let query = 'characters';
 
-        //assemble query
-        let query = 'characters';
-
-        query += '?limit='+per_page.toString();
-        //move to shared constant
-        if(starting_argument !== 'All'){
-            query += '&nameStartsWith='+starting_argument;
-        }
-        query += '&offset='+(per_page*page).toString();
-        query += '&apikey='+public_key;
-
-        let getParam = {method: "GET"};
-
-        fetch(proxyurl+url+query, getParam)
-        .then(function(response) {
-            if (response.ok) {
-                return response.json();
-                //return response.toString();
+            query += '?limit='+per_page.toString();
+            //move to shared constant
+            if(starting_argument !== 'All'){
+                query += '&nameStartsWith='+starting_argument;
             }
-            throw new Error("Network response was not ok.")
-        })
-        .then(function(result) {
-            //marvel attribution text (required)
-            setResult(result);
-            setLoading(false);
-        })
-        .catch(function(error) {
-            console.log("There has been a problem with your fetch operation: ",error.message);
-            setError(error)
-            setLoading(false)
-        });
+            query += '&offset='+(per_page*page).toString();
+            query += '&apikey='+public_key;
 
-        //setCharlist(resultset);
+            let getParam = {method: "GET"};
+
+            fetch(proxyurl+url+query, getParam)
+            .then(function(response) {
+                if (response.ok) {
+                    return response.json();
+                    //return response.toString();
+                }
+                throw new Error("Network response was not ok.")
+            })
+            .then(function(result) {
+                //marvel attribution text (required)
+                setResult(result);
+                setLoading(false);
+            })
+            .catch(function(error) {
+                console.log("There has been a problem with your fetch operation: ",error.message);
+                setError(error)
+                setLoading(false)
+            });
+        }
+        else {
+            setLoading(false);
+        }
         
     },
     [starts_with, page]);

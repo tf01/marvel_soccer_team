@@ -3,17 +3,37 @@
 @import './mobile.css';
 @import './web.css';
 
+/*General rules for the page*/
+
 #root{
   height: 100%;
 }
 
-/*General rules for both*/
+
 .App{
   text-align: center;
   background-image: url('/src/images/tilable3.png');
   background-repeat: repeat;
   min-height: 100vh;
 }
+
+.title-bar{
+  width: 100%;
+  background-color: #ed1d24;
+  font-size: 20pt;
+  font-weight: bolder;
+  color: white;
+
+  display: flex;
+  align-content: center;
+  vertical-align: auto;
+}
+
+.title{
+  font-size: 20pt;
+  font-weight: bolder;
+}
+
 .border{
   background-color: white;
   min-height: 100vh;

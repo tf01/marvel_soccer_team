@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {useGetCharacters, useGetCharacters_JSON_only} from './marvel_api'
 import {per_page} from './shared_constants';
 
@@ -47,27 +47,42 @@ export default function Character_Browser(props){
     const [numItemsOnCurrentPage, setNumItems] = useState(0);
     const [currentPage, setCurrentPage] = useState(null);
 
+    //retrieve results 
+    const {loading, result, error} = useGetCharacters_JSON_only(selected, page);
+    //console.log(result);
+
+    //update num when result is retrieved
+    useEffect(()=>{
+        if(result != null){
+            setNumItems(result.data.count);
+        }
+        
+    }, [result]);
 
     function handleAddToTeam(event){
         //Add modal dialog in here to ask when position
-        console.log(event.target.value)
-        console.log(currentPage.data.results)
+        //console.log(event.target.value)
+        //console.log(result.data.results)
         //search through current page to find character
-        let char = null;
-        let result_char = null;
-        for (result_char in currentPage.data.results){
-            if(result_char.id === event.target.value){
-                char = result_char;
+        let final_index = null;
+        let result_index = null;
+        for (result_index in result.data.results){
+
+            //console.log(result.data.results[result_index].id);
+            //console.log(event.target.value)
+            if(result.data.results[result_index].id == event.target.value){
+                props.add_character_to_team('goalkeeper', result.data.results[result_index]);
+                break;
             }
         }
-        props.add_character_to_team('goalkeeper', char);
+        //console.log(result.data.results[result_index]);
         setSelected('');
     }
 
     function letter_list_entry(item, index){
         return(
             // <tr className='letter-list-row' key={index}>
-            <div className="letter-list-entry">
+            <div className="letter-list-entry" key={index}>
                 {item.name}
                 <img src={item.thumbnail.path+'.'+item.thumbnail.extension} width='75' height='75'/>
                 <button className="letter-list-addbutton" value={item.id} onClick={handleAddToTeam}>
@@ -79,10 +94,10 @@ export default function Character_Browser(props){
     }
 
     function handlePageChange(event){
-        console.log(event.target.name)
-        console.log(page)
-        console.log(numItemsOnCurrentPage)
-        console.log(per_page)
+        // console.log(event.target.name)
+        // console.log(page)
+        // console.log(numItemsOnCurrentPage)
+        // console.log(per_page)
         if(event.target.name === 'right'){
             if(numItemsOnCurrentPage === per_page){
                 setPage(page+1);
@@ -95,10 +110,10 @@ export default function Character_Browser(props){
         }
     }
 
-    function Entered_Letter_List(start_with){
-        const {loading, result, error} = useGetCharacters_JSON_only(start_with, page);
-        
-        if(error){
+    function Entered_Letter_List(props){
+        //console.log(error, loading, result)
+        //console.log(props.err, props.load, props.res)
+        if(props.err){
             return(
                 <div className='error'>
                     There was an error.
@@ -106,42 +121,48 @@ export default function Character_Browser(props){
                 </div>
             )
         }
-        if(loading){
+        if(props.load){
             return(
                 <div className='letter-list-loading'>
                     Loading...
                 </div>
             )
         }
-        else if(result != undefined){
-            setNumItems(result.data.count)
-            setCurrentPage(result);
+        else if(props.res != null){
             return(
                 <div className='letter-list-table'>
-                    <button classname='page-navi-left' name='left' onClick={handlePageChange}>
+                    <button className='page-navi-left' name='left' onClick={handlePageChange}>
                         &#60;
                     </button>
                     <div className='letter-list-body'>
                         {result.data.results.map(letter_list_entry)}
                     </div>
-                    <button classname='page-navi-right' name='right'  onClick={handlePageChange}>
+                    <button className='page-navi-right' name='right'  onClick={handlePageChange}>
                         &#62;
                     </button>
                 </div>
             )
         }
+        else{
+            return(
+                <div>
+                    this
+                </div>
+            )
+        }
+        
     }
 
     function handleSelectionPaneClicked(event){
         //console.log(event.target.name)
-        setSelected(event.target.name)
+        setSelected(labels[event.target.name])
         //console.log(selected)
     }
 
     function initial_selection_pane_item(item, index){
         return(
             // <tr className='selection-pane-item'>
-                <button name={index} className='selection-pane-button' onClick={handleSelectionPaneClicked}>
+                <button name={index} key={index} className='selection-pane-button' onClick={handleSelectionPaneClicked}>
                     {item}
                 </button>
             // </tr>
@@ -174,7 +195,7 @@ export default function Character_Browser(props){
                 <button className="back-button-browser" onClick={handleBack}>
                     Back
                 </button>
-                <Entered_Letter_List starts_with={labels[selected]}/>
+                <Entered_Letter_List err={error} load={loading} res={result}/>
                 </div>
             )
         }

@@ -1,6 +1,7 @@
-/* .chosen-characters-element{
-
-} */
+.chosen-characters-element{
+    display: flex;
+    align-content: center;
+} 
 
 .char-button{
     height: 100px;
@@ -9,4 +10,19 @@
     color: white;
     font-size: 1cm;
     background-color: darkgrey;
+}
+
+.chosen{
+    width: 100%;
+    transition: all .2s ease;
+    background-color: white;
+    
+}
+
+.scrolled{
+    position: fixed;
+    /* transform: translateZ(0); */
+    top: 0;
+    left: 0;
+    background-color: white;
 }
