@@ -1,9 +1,49 @@
 import logo from './logo.svg';
-import './App.css';
+import './stylesheets/main.css';
 import { Component } from 'react';
 
 import Character_Browser from './character_browser'
+import { useGetCharacters_JSON_only } from './marvel_api';
+import Chosen_Characters from './chosen_characters';
 //import Chosen_Characters from './chosen_characters'
+
+const MarvelURL = "http://marvel.com";
+const githubURL = "https://github.com/tf01/marvel_soccer_team";
+
+function AttributionHTML(){
+  //Make dummy request, to get the attribution message
+  //Should ensure that attribution message stays up to date, 2020, 2021, etc
+  const none_starts_with = 'hdfljkasdfjsahdflkjhsadflh';
+  let page = 0;
+  const {loading, result, error} = useGetCharacters_JSON_only(none_starts_with, page)
+
+  if(error){
+    //page++;
+    return(
+      <div>
+        Error from Marvel API.
+      </div>
+    )
+  }
+  if(loading){
+    return(
+      <div>
+        Loading...
+      </div>
+    )
+  }
+  return(
+    <div>
+      <a href={MarvelURL}>
+        {result.attributionText}
+      </a>
+      {/* &emsp;
+      <a href={githubURL}>
+      Developed by Thomas Flint
+      </a> */}
+    </div>
+  )
+}
 
 class App extends Component{
   //Main component that the page is built from
@@ -12,14 +52,16 @@ class App extends Component{
     super(props);
     //Main state for the entire app
     this.state = {
-      goalkeeper: '',
-      striker: '',
-      midfielder: '',
-      defender: '',
-      other: '',
+      goalkeeper: null,
+      striker: null,
+      midfielder: null,
+      defender: null,
+      other: null,
 
-      results: '',
+      results: null,
       attribution: '',
+
+      search_string: '',
     }
   }
 
@@ -30,6 +72,8 @@ class App extends Component{
   gotGK(gk){
     this.setState({goalkeeper: gk});
   }
+
+
 
 
   //No need for routing in this project
@@ -50,17 +94,26 @@ class App extends Component{
       <div className="App">
         <div className="border">
           <div className="chosen-characters">
-            chosen characters
+            <Chosen_Characters GK={this.state['goalkeeper']}
+                                ST={this.state['striker']}
+                                MD={this.state['midfielder']}
+                                DF={this.state['defender']}
+                                flexible={this.state['other']}
+            
+            />
           </div>
 
           <div className="selection-pane">
-            {/* selection pane */}
+            {/* 
+            may put search bar out here, and pass through its results as props 
+            that way, it's available all of the time
+            */}
             <Character_Browser/>
           </div>
         </div>
 
-        <footer>
-          test marvel attribution
+        <footer className="footer-attr">
+          <AttributionHTML/>
         </footer>
       </div>
     )
