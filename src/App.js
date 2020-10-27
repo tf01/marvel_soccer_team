@@ -160,12 +160,12 @@ class App extends Component{
             /> */}
           </div>
           {/* {this.state.list.map(tester)} */}
-          <button onClick={this.toggleModal}>
+          {/* <button onClick={this.toggleModal}>
           Open the modal
           </button>
           <Modal show={this.state.modalIsOpen} onClose={this.toggleModal}>
             content
-          </Modal>
+          </Modal> */}
           
 
           <div className="selection-pane">
