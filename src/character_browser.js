@@ -201,8 +201,17 @@ export default function Character_Browser(props){
         }
     }
 
+    function Search_Bar(){
+        return(
+            <div className="search">
+                
+            </div>
+        )
+    }
+
     return(
         <div className='character-browser'>
+            <Search_Bar/>
             <Current_View/>
         </div>
     )
