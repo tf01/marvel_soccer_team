@@ -40,7 +40,9 @@ export const public_key = 'public-key-here';
 - Stick heading works for both mobile and web, plus sticky footer and spacing is figured out
 - Need to validate team details, and create modals that let you view information/add/remove characters from your team
 - Share button? Could probably put a share button in the footer
-- 
+
+- Instead of going with a modal, going to make another selection pane
+  - detailed view, which will have the options to add under a certain position
 
 
 
