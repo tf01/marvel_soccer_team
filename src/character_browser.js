@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
+import Detailed_Character_View from './detailed_character_view';
 import {useGetCharacters, useGetCharacters_JSON_only} from './marvel_api'
-import {per_page} from './shared_constants';
+import {per_page, test} from './shared_constants';
 
 const labels = [
     'All',
@@ -60,7 +61,7 @@ export default function Character_Browser(props){
     }, [result]);
 
     function handleAddToTeam(event){
-        
+
         //Add modal dialog in here to ask when position
         //console.log(event.target.value)
         //console.log(result.data.results)
@@ -70,8 +71,8 @@ export default function Character_Browser(props){
         for (result_index in result.data.results){
 
             //console.log(result.data.results[result_index].id);
-            //console.log(event.target.value)
-            if(result.data.results[result_index].id == event.target.value){
+            console.log(event.target.dataset.item)
+            if(result.data.results[result_index].id == event.target.dataset.item){
                 final_index = result.data.results[result_index];
                 break;
             }
@@ -84,10 +85,10 @@ export default function Character_Browser(props){
     function letter_list_entry(item, index){
         return(
             // <tr className='letter-list-row' key={index}>
-            <div className="letter-list-entry" key={index}>
+            <div className="letter-list-entry" key={index} data-item={item.id} onClick={handleAddToTeam}>
                 {item.name}
                 <img src={item.thumbnail.path+'.'+item.thumbnail.extension} width='75' height='75'/>
-                <button className="letter-list-addbutton" value={item.id} onClick={handleAddToTeam}>
+                <button className="letter-list-addbutton" value={item.id} >
                     Add
                 </button>
             </div>
@@ -215,6 +216,7 @@ export default function Character_Browser(props){
         <div className='character-browser'>
             <Search_Bar/>
             <Current_View/>
+            
         </div>
     )
 }

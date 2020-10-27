@@ -1,0 +1,43 @@
+.detailed-char-view-wrap{
+    display: flex;
+    flex-direction: column;
+
+    background-color: gray;
+    color: white;
+}
+
+.detailed-char-view{
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    flex-grow: 8;
+
+
+}
+
+.detailed-char-view .char-id{
+    padding: 5;
+}
+
+.detailed-char-view .char-name{
+    
+}
+
+.detailed-char-view .portrait{
+    height:100px;
+    width: 100px;
+    align-self: flex-end;
+}
+
+.detailed-char-view .description{
+    
+}
+
+.detailed-char-view-wrap .options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
