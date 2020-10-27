@@ -45,6 +45,8 @@ function AttributionHTML(){
   )
 }
 
+
+
 class App extends Component{
   //Main component that the page is built from
    
@@ -63,6 +65,13 @@ class App extends Component{
 
       search_string: '',
     }
+
+    this.add_character_to_team = this.add_character_to_team.bind(this);
+  }
+
+  add_character_to_team(position, character){
+    console.log(character);
+    this.setState({goalkeeper: character});
   }
 
   gotAttribution(attr){
@@ -108,7 +117,7 @@ class App extends Component{
             may put search bar out here, and pass through its results as props 
             that way, it's available all of the time
             */}
-            <Character_Browser/>
+            <Character_Browser add_character_to_team={this.add_character_to_team}/>
           </div>
         </div>
 
