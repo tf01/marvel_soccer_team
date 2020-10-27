@@ -1,0 +1,23 @@
+.selection-pane-button{
+  background-color: white;
+  border-style: none;
+}
+
+.selection-pane-button:hover{
+  background-color: darkgrey;
+  color: white;
+  border-style: none;
+}
+
+
+.selection-pane{
+  position: static;
+  /* padding-top: 8%; */
+  top: 20%;
+}
+.selection-pane-table{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}

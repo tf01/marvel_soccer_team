@@ -1,0 +1,19 @@
+/* Use CSS media queries to dynamically change site for both mobile and 
+web versions */
+
+/*For small screen*/
+@media screen and (max-width: 540px){
+  .border{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }  
+  .selection-pane-button{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+}
