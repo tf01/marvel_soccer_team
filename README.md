@@ -23,13 +23,26 @@ export const public_key = 'public-key-here';
 - Include save to file, maybe simple social media integration
 
 - See design sketches:
+<details>
+
   - Desktop (v0.1)
 <img src="design_images/marvel_soccer_team_page.png">
 
   - Mobile (v0.1)
 <img src="design_images/marvel_soccer_team_phone.png">
 
+</details>
+
+# Mid-Project Notes
+- Rough start, getting used to using react again
+- Finally figured out my information flow, and it seems to be working.
+- Could probably cut down on API requests by making pages larger, will have to look into that.
+- Stick heading works for both mobile and web, plus sticky footer and spacing is figured out
+- Need to validate team details, and create modals that let you view information/add/remove characters from your team
+- Share button? Could probably put a share button in the footer
 - 
+
+
 
 ### Default create-react-app readme
 <details>
