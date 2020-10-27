@@ -24,3 +24,7 @@ yarn-error.log*
 
 #not committing this
 src/public_key.js
+
+#ignore krita files, keep exports only
+*.kra
+*.kra~
