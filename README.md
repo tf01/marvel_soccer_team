@@ -44,6 +44,13 @@ export const public_key = 'public-key-here';
 - Instead of going with a modal, going to make another selection pane
   - detailed view, which will have the options to add under a certain position
 
+## Final To-do List
+- Be able to remove characters from selection
+- Selection for specific Positions (with checking)
+- Display detailed info
+- Share button
+- Fix up mobile representation
+- 
 
 
 ### Default create-react-app readme
