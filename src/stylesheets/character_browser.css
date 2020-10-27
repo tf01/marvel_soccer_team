@@ -39,14 +39,20 @@
 
 .letter-list-entry{
   border: 10px black;
-  border-style: solidkrita;
+  border-style: solid;
   padding: 1mm 1mm 1mm 1mm;
+  text-align: center;
+  
 }
 
 .page-navi-left{
-  float: left;
+  position: fixed;
+  left: 20%;
+  height: 80%;
 }
 
 .page-navi-right{
-  float: right;
+  position: fixed;
+  right: 20%;
+  height: 80%;
 }

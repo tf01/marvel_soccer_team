@@ -60,6 +60,7 @@ export default function Character_Browser(props){
     }, [result]);
 
     function handleAddToTeam(event){
+        
         //Add modal dialog in here to ask when position
         //console.log(event.target.value)
         //console.log(result.data.results)
@@ -71,11 +72,12 @@ export default function Character_Browser(props){
             //console.log(result.data.results[result_index].id);
             //console.log(event.target.value)
             if(result.data.results[result_index].id == event.target.value){
-                props.add_character_to_team('goalkeeper', result.data.results[result_index]);
+                final_index = result.data.results[result_index];
                 break;
             }
         }
         //console.log(result.data.results[result_index]);
+        props.add_character_to_team('goalkeeper', final_index);
         setSelected('');
     }
 

@@ -21,7 +21,7 @@ export default function Chosen_Log(props){
     })
 
     function WelcomeTutorial(){
-      if(props.list.length == 0){
+      if(props.list.length === 0){
         return(
           <div className="welcome">
             Welcome to this Marvel 5-side Soccer Team Selector! Select your favourite Marvel characters by name below, and add them to your team!

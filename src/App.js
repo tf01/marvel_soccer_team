@@ -7,6 +7,7 @@ import { useGetCharacters_JSON_only } from './marvel_api';
 import Chosen_Characters from './chosen_characters';
 import { scryRenderedDOMComponentsWithTag } from 'react-dom/test-utils';
 import Chosen_Log from './chosen_log';
+import Modal from './modal'
 //import Chosen_Characters from './chosen_characters'
 
 const MarvelURL = "http://marvel.com";
@@ -63,6 +64,7 @@ class App extends Component{
       other: null,
 
       list: [],
+      modalIsOpen: false,
 
       results: null,
       attribution: '',
@@ -71,6 +73,13 @@ class App extends Component{
     }
 
     this.add_character_to_team = this.add_character_to_team.bind(this);
+    //this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal = () => {
+    this.setState({
+      modalIsOpen: !this.state.modalIsOpen
+    });
   }
 
   add_character_to_team(position, character){
@@ -151,6 +160,12 @@ class App extends Component{
             /> */}
           </div>
           {/* {this.state.list.map(tester)} */}
+          <button onClick={this.toggleModal}>
+          Open the modal
+          </button>
+          <Modal show={this.state.modalIsOpen} onClose={this.toggleModal}>
+            content
+          </Modal>
           
 
           <div className="selection-pane">
@@ -165,6 +180,7 @@ class App extends Component{
         <footer className="footer-attr">
           <AttributionHTML/>
         </footer>
+
       </div>
     )
   }
