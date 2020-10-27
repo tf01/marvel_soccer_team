@@ -83,6 +83,7 @@ class App extends Component{
     // }.bind(position, character)();
     // //state[position] = character;
     // this.setState(stateObj);
+    character.position = position;
     this.setState(prevState => ({
       list: [...prevState.list, character]
     }));
