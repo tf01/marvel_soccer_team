@@ -1,8 +1,10 @@
 import {useState} from 'react'
 import {useGetCharacters, useGetCharacters_JSON_only} from './marvel_api'
+import {per_page} from './shared_constants';
 
 const labels = [
-    '0-A',
+    'All',
+    'A',
     'B',
     'C',
     'D',
@@ -31,6 +33,9 @@ const labels = [
 
 ]
 
+// const left_button_label = &#60;
+// const right_button_label = &#62;
+
 //User actions:
     //render initial selection pane (all buttons with letters)
     //User clicks on button, is taken to list of characters starting with that letter
@@ -38,11 +43,13 @@ const labels = [
 
 export default function Character_Browser(){
     const [selected, setSelected] = useState('');
+    const [page, setPage] = useState(0);
+    const [numItemsOnCurrentPage, setNumItems] = useState(0);
 
     function letter_list_entry(item, index){
         return(
             // <tr className='letter-list-row' key={index}>
-            <div>
+            <div className="letter-list-entry">
                 {item.name}
                 <img src={item.thumbnail.path+'.'+item.thumbnail.extension} width='75' height='75'/>
             </div>
@@ -50,18 +57,27 @@ export default function Character_Browser(){
         )
     }
 
+    function handlePageChange(event){
+        console.log(event.target.name)
+        console.log(page)
+        console.log(numItemsOnCurrentPage)
+        console.log(per_page)
+        if(event.target.name === 'right'){
+            if(numItemsOnCurrentPage === per_page){
+                setPage(page+1);
+            } 
+        }
+        else{
+            if(page > 0){
+                setPage(page - 1);
+            }
+        }
+    }
+
     function Entered_Letter_List(start_with){
-        // const {loading, character_list, attribution, error} = useGetCharacters(start_with);
-        // // let character_list = ['test1', 'test2', 'test3'];
-        // // let error = false;
-        // // let loading = false;
-        // let arr = ['arrtest'].concat(character_list)
-        // //console.log();
-        // console.log(attribution);
-        // console.log(loading)
-        // console.log(error)
-        const {loading, result, error} = useGetCharacters_JSON_only(start_with);
-        console.log(result);
+
+        const {loading, result, error} = useGetCharacters_JSON_only(start_with, page);
+
         if(error){
             return(
                 <div className='error'>
@@ -78,21 +94,28 @@ export default function Character_Browser(){
             )
         }
         else if(result != undefined){
+            setNumItems(result.data.count)
             return(
-                <table className='letter-list-table'>
-                    <tbody className='letter-list-body'>
+                <div className='letter-list-table'>
+                    <button classname='page-navi-left' name='left' onClick={handlePageChange}>
+                        &#60;
+                    </button>
+                    <div className='letter-list-body'>
                         {result.data.results.map(letter_list_entry)}
                         {/* {attribution} */}
-                    </tbody>
-                </table>
+                    </div>
+                    <button classname='page-navi-right' name='right'  onClick={handlePageChange}>
+                        &#62;
+                    </button>
+                </div>
             )
         }
     }
 
     function handleSelectionPaneClicked(event){
-        console.log(event.target.name)
+        //console.log(event.target.name)
         setSelected(event.target.name)
-        console.log(selected)
+        //console.log(selected)
     }
 
     function initial_selection_pane_item(item, index){
@@ -121,7 +144,7 @@ export default function Character_Browser(){
             )
         }
         else{
-            console.log(selected)
+            //console.log(selected)
             return(
                 <Entered_Letter_List starts_with={labels[selected]}/>
             )
