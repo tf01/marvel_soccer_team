@@ -8,7 +8,6 @@
 .char-button{
     /* height: 150px;
     width: 100px; */
-
     color: black;
     font-size: 0.5cm;
     background-color: white;
@@ -17,11 +16,15 @@
 .char-button img{
     height: 80px;
     width: 80px;
+    border-style: ridge;
+    border-color: black;
+    border-width: 2px;
 }
 
 .chosen{
     width: 100%;
-    transition: all .2s ease;
+    
+    /* transition: all .1s ease; */
     background-color: white;
     
 }
@@ -30,6 +33,12 @@
     position: fixed;
     /* transform: translateZ(0); */
     top: 0;
-    left: 0;
+    /* left: 0; */
     background-color: white;
+}
+
+@media screen and (min-width: 960px){
+    .scrolled{
+        width:40%;
+    }
 }

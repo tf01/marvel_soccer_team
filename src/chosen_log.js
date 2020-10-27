@@ -43,11 +43,13 @@ export default function Chosen_Log(props){
     function buttons(item, index){
       return(
         <div key={index}>
-          <button className="char-button" value={index}>
-            {item.name}
-            <img src={item.thumbnail.path+'.'+item.thumbnail.extension}/>
-            {item.position}
-          </button>
+          {/* <button className="char-button" value={index}>
+            {item.name} */}
+            <div className="char-button">
+              <img src={item.thumbnail.path+'.'+item.thumbnail.extension}/>
+            </div>
+            {/* {item.position}
+          </button> */}
           
         </div>
         
