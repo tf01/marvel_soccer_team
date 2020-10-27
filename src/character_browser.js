@@ -41,10 +41,12 @@ export default function Character_Browser(){
 
     function letter_list_entry(item, index){
         return(
-            <tr className='letter-list-row' key={index}>
+            // <tr className='letter-list-row' key={index}>
+            <div>
                 {item.name}
                 <img src={item.thumbnail.path+'.'+item.thumbnail.extension} width='75' height='75'/>
-            </tr>
+            </div>
+            //</tr>
         )
     }
 
@@ -95,19 +97,19 @@ export default function Character_Browser(){
 
     function initial_selection_pane_item(item, index){
         return(
-            <tr className='selection-pane-item'>
+            // <tr className='selection-pane-item'>
                 <button name={index} className='selection-pane-button' onClick={handleSelectionPaneClicked}>
                     {item}
                 </button>
-            </tr>
+            // </tr>
         )
     }
 
     function Initial_Selection_Pane(){
         return(
-            <table className='selection-pane-table'>
+            <div className='selection-pane-table'>
                 {labels.map(initial_selection_pane_item)}
-            </table>
+            </div>
         )
     }
 

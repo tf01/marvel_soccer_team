@@ -3,16 +3,7 @@ import './App.css';
 import { Component } from 'react';
 
 import Character_Browser from './character_browser'
-
-
-function long_list(){
-  return(
-    <table>
-
-    </table>
-  )
-}
-
+//import Chosen_Characters from './chosen_characters'
 
 class App extends Component{
   //Main component that the page is built from
@@ -36,6 +27,10 @@ class App extends Component{
     this.setState({attribution: attr});
   }
 
+  gotGK(gk){
+    this.setState({goalkeeper: gk});
+  }
+
 
   //No need for routing in this project
   /*
@@ -53,13 +48,13 @@ class App extends Component{
   render() {
     return(
       <div className="App">
-        <div className="margins">
+        <div className="border">
           <div className="chosen-characters">
             chosen characters
           </div>
 
           <div className="selection-pane">
-            selection pane
+            {/* selection pane */}
             <Character_Browser/>
           </div>
         </div>

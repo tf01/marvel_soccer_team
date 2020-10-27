@@ -2,25 +2,102 @@
   text-align: center;
 }
 
+/* Use CSS media queries to dynamically change site for both mobile and 
+web versions */
+
+/*For small screen*/
+@media screen and (max-width: 540px){
+  .border{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }  
+  .selection-pane-button{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+}
+
+
+/*larger screen*/
+@media screen and (min-width: 540px){
+  .border{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    box-sizing: border-box;
+  }  
+  .selection-pane-button{
+    width: 100px;
+    height: 100px;
+  }
+}
+
+#root{
+  height: 100%;
+}
+
+/*General rules for both*/
+.App{
+  background-color: darkgray;
+  min-height: 100vh;
+}
+.border{
+  background-color: white;
+  min-height: 100vh;
+}
+
+.selection-pane-button{
+  background-color: white;
+  border-style: none;
+}
+
+.selection-pane-button:hover{
+  background-color: darkgrey;
+  color: white;
+  border-style: none;
+}
 
 footer{
   position: fixed;
   bottom: 0;
   width: 100%;
   font-size: large;
+  background-color: grey;
+  opacity: 40%;
+}
+
+footer:hover{
+  opacity: 90%;
+}
+
+.selection-pane{
+  position: static;
+  /* padding-top: 8%; */
+  top: 20%;
 }
 
 .chosen-characters{
-  position: fixed;
+  position: static;
   top: 0;
-  left: 20%;
+  /* left: 20%; */
   width: 100%;
   font-size: larger;
 }
 
-.selection-pane-button{
-  width: 50px;
-  height: 50px;
+.selection-pane-table{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
 }
+
+
 
 /* Need to write CSS for flexy boxes, so that */
