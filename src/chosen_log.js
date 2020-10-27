@@ -46,7 +46,7 @@ export default function Chosen_Log(props){
           {/* <button className="char-button" value={index}>
             {item.name} */}
             <div className="char-button">
-              <img src={item.thumbnail.path+'.'+item.thumbnail.extension}/>
+              <img src={item.thumbnail.path+'.'+item.thumbnail.extension} alt={item.name}/>
             </div>
             {/* {item.position}
           </button> */}
