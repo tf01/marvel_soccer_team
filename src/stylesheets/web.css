@@ -2,7 +2,7 @@
 web versions */
 
 /*larger screen*/
-@media screen and (min-width: 540px){
+@media screen and (min-width: 960px){
   .border{
     width: 50%;
     margin-left: auto;
@@ -10,6 +10,7 @@ web versions */
     padding-left: 5%;
     padding-right: 5%;
     box-sizing: border-box;
+    padding-bottom: 10mm;
   }  
   .selection-pane-button{
     width: 100px;

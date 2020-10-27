@@ -1,3 +1,5 @@
+/* selection pane */
+
 .selection-pane-button{
   background-color: white;
   border-style: none;
@@ -20,4 +22,31 @@
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
+}
+
+/*character list pane*/
+.letter-list-table{
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* .letter-list-body{
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+} */
+
+.letter-list-entry{
+  border: 10px black;
+  border-style: solidkrita;
+  padding: 1mm 1mm 1mm 1mm;
+}
+
+.page-navi-left{
+  float: left;
+}
+
+.page-navi-right{
+  float: right;
 }
