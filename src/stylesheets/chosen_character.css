@@ -1,15 +1,22 @@
 .chosen-characters-element{
     display: flex;
-    align-content: center;
+    align-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
 } 
 
 .char-button{
-    height: 100px;
-    width: 100px;
+    /* height: 150px;
+    width: 100px; */
 
-    color: white;
-    font-size: 1cm;
-    background-color: darkgrey;
+    color: black;
+    font-size: 0.5cm;
+    background-color: white;
+}
+
+.char-button img{
+    height: 80px;
+    width: 80px;
 }
 
 .chosen{
