@@ -43,7 +43,7 @@ export const public_key = 'public-key-here';
 - List headings should toggle between numbered order, alphabetical, and reverse-alphabetical
 - Include save to file, maybe simple social media integration
 
-- See design sketches:
+See design sketches:
 <details>
 
   - Desktop (v0.1)
