@@ -2,10 +2,11 @@
 React app that allows the user to create a 5-aside soccer team from Marvel Comics characters.
 
 # API Key
-- Ensure that a file called `public_key.js` is created and placed in the src folder, with the format:
+- Ensure that a file called `public_key.js` is created and placed in the `src` folder, with the format:
 ```
 export const public_key = 'public-key-here';
 ```
+- Go to https://developer.marvel.com/ for a key
 - Only the one line is necessary for the system to work. If you'd like my public key for the API, let me know.
 
 # Ideas

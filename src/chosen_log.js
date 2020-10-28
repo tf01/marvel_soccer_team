@@ -101,14 +101,14 @@ export default function Chosen_Log(props){
       return(
         <div>
           <div className={x.join(" ")}>
-          <div className="chosen-characters-element">
-            <WelcomeTutorial/>
-            {props.list.map(buttons)}
+            <div className="chosen-characters-element">
+              <WelcomeTutorial/>
+              {props.list.map(buttons)}
+            </div>
           </div>
           <Detailed_Character_View    option_list={[remove_constant]} 
                                       list_action={handleRemove}
                                       character={char}/>
-          </div>
         </div>
 
       )

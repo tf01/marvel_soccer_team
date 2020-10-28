@@ -8,6 +8,8 @@ import Chosen_Characters from './chosen_characters';
 import { scryRenderedDOMComponentsWithTag } from 'react-dom/test-utils';
 import Chosen_Log from './chosen_log';
 import Modal from './modal'
+import {legal_to_include} from './team_mananagement';
+
 //import Chosen_Characters from './chosen_characters'
 
 const MarvelURL = "http://marvel.com";
@@ -85,9 +87,18 @@ class App extends Component{
 
   add_character_to_team(position, character){
     character.position = position;
-    this.setState(prevState => ({
-      list: [...prevState.list, character]
-    }));
+
+    const legality_object = legal_to_include(this.state.list, character);
+    if(legality_object.legal){
+      this.setState(prevState => ({
+        list: [...prevState.list, character]
+      }));
+    }
+    else{
+      alert("Could not add "+character.name+" to team. Reason: "+legality_object.reason);
+    }
+
+
   }
 
   remove_character_from_team(character){
