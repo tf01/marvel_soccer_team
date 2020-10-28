@@ -138,7 +138,7 @@ export default function Character_Browser(props){
 
         if(props.err){
             return(
-                <div className='error'>
+                <div className='letter-list-loading'>
                     There was an error.
                     {error.message}
                 </div>
