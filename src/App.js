@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './stylesheets/main.css';
 import { Component } from 'react';
 
@@ -9,6 +8,8 @@ import { scryRenderedDOMComponentsWithTag } from 'react-dom/test-utils';
 import Chosen_Log from './chosen_log';
 import Modal from './modal'
 import {legal_to_include} from './team_mananagement';
+
+import {TwitterShareButton} from 'react-twitter-embed';
 
 //import Chosen_Characters from './chosen_characters'
 
@@ -72,6 +73,8 @@ class App extends Component{
       attribution: '',
 
       search_string: '',
+
+      tweetOptions: {},
     }
 
     this.add_character_to_team = this.add_character_to_team.bind(this);
@@ -98,7 +101,7 @@ class App extends Component{
       alert("Could not add "+character.name+" to team. Reason: "+legality_object.reason);
     }
 
-
+    this.updateTweet();
   }
 
   remove_character_from_team(character){
@@ -110,6 +113,8 @@ class App extends Component{
     this.setState(prevState => ({
       list: copy_of_array
     }));
+
+    this.updateTweet();
   }
 
   gotAttribution(attr){
@@ -118,6 +123,26 @@ class App extends Component{
 
   gotGK(gk){
     this.setState({goalkeeper: gk});
+  }
+
+  //Update tweet string thing user may want to send with share button
+  //May not get correct state if called too early?
+  updateTweet(){
+    let tweet = 'My Team: ';
+    let index = 0;
+    for(index in this.state.list){
+      tweet = tweet + this.state.list[index].name ;
+      if(index < this.state.list){
+        tweet = tweet + ", ";
+      }
+      else{
+        tweet = tweet + ".";
+      }
+    }
+    
+    let opts = {text: tweet};
+    console.log(opts);
+    this.setState({tweetOptions: opts});
   }
 
 
@@ -193,8 +218,10 @@ class App extends Component{
           </div>
         </div>
 
-        <footer className="footer-attr">
+        <footer className='footer-attr'>
           <AttributionHTML/>
+          &nbsp;
+          <TwitterShareButton options={this.state.tweetOptions}/>
         </footer>
 
       </div>

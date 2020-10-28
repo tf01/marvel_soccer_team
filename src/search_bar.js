@@ -1,6 +1,5 @@
 import {Component} from 'react';
 
-
 export default class Search_Bar extends Component{
     //Should accept one prop: submit: the submission function, taking the argument to submit.
 
@@ -37,7 +36,7 @@ export default class Search_Bar extends Component{
                     placeholder="Name..." 
                     value={this.state.search_term} 
                     onChange={this.change_search} />
-            <input key="sbutton" type="submit" value="Search"/>
+            <input className='enter' key="sbutton" type="submit" value="Search"/>
             </form>
         )
     }

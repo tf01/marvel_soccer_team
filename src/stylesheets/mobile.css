@@ -17,4 +17,11 @@ web versions */
     padding-top: 3%;
     padding-bottom: 3%;
   }
+  .title{
+    font-size: 20pt;
+  }
+
+  .letter-list-entry{
+    min-width: 100vw;
+  }
 }

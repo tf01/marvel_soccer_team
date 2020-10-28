@@ -210,14 +210,14 @@ export default function Character_Browser(props){
 
     function Navigation(){
         return(
-            <div className="letter_list_navi">
-                <button className='page-navi-left' name='left' onClick={handlePageChange}>
+            <div className="letter-list-navi">
+                <button className='navi-buttons' name='left' onClick={handlePageChange}>
                 &#60;
                 </button>
-                <button className="back-button-browser" onClick={handleBack}>
+                <button className="navi-buttons" onClick={handleBack}>
                     Back
                 </button>
-                <button className='page-navi-right' name='right'  onClick={handlePageChange}>
+                <button className='navi-buttons' name='right'  onClick={handlePageChange}>
                 &#62;
                 </button>
             </div>

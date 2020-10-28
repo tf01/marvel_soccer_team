@@ -16,4 +16,10 @@ web versions */
     width: 100px;
     height: 100px;
   }
+  .title{
+    font-size: 40pt;
+  }
+  .letter-list-entry{
+    min-width: 50%;
+  }
 }

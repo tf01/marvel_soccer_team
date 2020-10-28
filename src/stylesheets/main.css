@@ -32,12 +32,12 @@
 }
 
 .title{
-  font-size: 20pt;
   font-weight: bolder;
+  color:white;
 }
 
 .border{
-  background-color: white;
+  background-image: url('/src/images/tilable3-light.png');
   min-height: 100vh;
 }
 
@@ -49,19 +49,29 @@
   font-size: larger;
 }
 
+.welcome{
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
+}
+
 .footer-attr{
   position: fixed;
   bottom: 0;
   width: 100%;
   font-size: large;
-  background-color: grey;
-  opacity: 65%;
-  color: #ed1d24;
+  opacity: 100%;
+  color: #ac171c;
   padding-bottom: 1.5mm;
   padding-top: 1mm;
   margin-left: auto;
   margin-right: auto;
   font-weight: bolder;
+
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  padding-top: 1mm;
 }
 
 .footer-attr a{
@@ -88,4 +98,5 @@
   background-color: rgb(27, 27, 27);
   opacity: 100%;
 }
+
 

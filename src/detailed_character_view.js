@@ -78,17 +78,14 @@ export default class Detailed_Character_View extends Component{
 
         return(
             <div className="detailed-char-view-wrap">
-
-                <div className="detailed-char-view">
-                    <div className="stats">
-                        <this.Render_Position pos={this.props.character.position}/>
-                        <div className="char-name">
-                            {this.props.character.name}
-                        </div>
-                    </div>
-
-                    <img className="portrait" src={this.props.character.thumbnail.path+'.'+this.props.character.thumbnail.extension}/>
+                
+                <this.Render_Position pos={this.props.character.position}/>
+                <div className="char-name">
+                    {this.props.character.name}
                 </div>
+                
+                <img className="portrait" src={this.props.character.thumbnail.path+'.'+this.props.character.thumbnail.extension}/>
+                
                 <div className="description">
                         {this.props.character.description}
                 </div>

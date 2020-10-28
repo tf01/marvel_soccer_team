@@ -13,7 +13,7 @@ export default function Chosen_Log(props){
 
     const handleScroll=()=>{
         const scroll_d = window.scrollY;
-        if(scroll_d > 50){
+        if(scroll_d > 100 && props.list.length !== 0){
             setScrolled(true);
         }
         else{
@@ -29,7 +29,7 @@ export default function Chosen_Log(props){
       if(props.list.length === 0){
         return(
           <div className="welcome">
-            Welcome to this Marvel 5-side Soccer Team Selector! Select your favourite Marvel characters by name below, and add them to your team!
+            Select your favourite Marvel characters by name below, and add them to your team!
             Once you click on a character, their portrait will appear at the top of the screen. Click on them again to view more info, or remove them from your team.
           </div>
         )

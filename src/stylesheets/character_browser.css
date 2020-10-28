@@ -1,12 +1,22 @@
 /* selection pane */
 
+/* .character-browser{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+} */
+
 .selection-pane-button{
-  background-color: white;
-  border-style: none;
+  background-color: rgba(255, 255, 255, 0);
+  border-color: rgba(255, 255, 255, 0);
+  border-style: solid;
+
+  color: whitesmoke;
+  font-size: larger;
 }
 
 .selection-pane-button:hover{
-  background-color: darkgrey;
+  background-color:  rgba(255, 255, 255, 0.281);
   color: white;
   border-style: none;
 }
@@ -25,6 +35,11 @@
 }
 
 /*character list pane*/
+.letter-list-loading{
+  font-size: 30pt;
+  font-weight: bolder;
+  color: white;
+}
 .letter-list-table{
   display: flex;
   flex-direction: row;
@@ -35,7 +50,7 @@
   display:flex;
   justify-content: center;
   flex-direction: column;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .letter-list-entry{
@@ -45,38 +60,62 @@
   text-align: center;
   background-image: url('./../images/tilable3.png');
   color: white;
-  min-width: 100vw;
+  min-width: 100%;
 
-  display:flex;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .letter-list-name-label {
-
+  font-weight: bold;
+  padding-bottom: 1vh;
 }
 
 .letter-list-img{
-  height: 35vh;
-  width: 35vh;
+  height: 25vh;
+  /* width: 35vh; */
+  padding-bottom: 1vh;
 }
 
-.page-navi-left{
+/*Navigation*/
+.letter-list-navi{
 
+  width: 100%
 }
 
-.page-navi-right{
+.navi-buttons{
+  width: 25%;
+  min-height: 100%;
+  height: auto;
+  border-style: none;
 
+  background-color: rgba(255, 255, 255, 0);
+  color:whitesmoke;
+  font-size: larger;
 }
+
+.navi-buttons:hover{
+  background-color:  rgba(255, 255, 255, 0.281);
+  color: white;
+}
+
 
 /* Search Bar */
 .search{
-
+  /* background-color: white; */
+  display: grid;
+  grid-template-areas: "bar bar enter";
 }
 
 .search .bar{
-
+  grid-area: bar;
+  font-size: larger;
 }
 
 .search .enter{
-  
+  grid-area: enter;
+  font-size: larger;
 }
