@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import { back_constant } from './shared_constants';
+import { back_constant } from '../shared_constants';
 
 
 export default class Detailed_Character_View extends Component{

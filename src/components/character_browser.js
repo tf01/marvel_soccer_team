@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react'
 import Search_Bar from './search_bar';
 import Detailed_Character_View from './detailed_character_view';
-import {useGetCharacters_JSON_only} from './marvel_api'
-import {back_constant, per_page, positions} from './shared_constants';
+import {useGetCharacters_JSON_only} from '../marvel_api'
+import {back_constant, per_page, positions} from '../shared_constants';
 
 const labels = [
     'All',
