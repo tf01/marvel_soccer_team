@@ -47,6 +47,27 @@ export default class Detailed_Character_View extends Component{
         }
     }
 
+    individual_link(item, index){
+        return(
+            <div key = {index} className="link">
+                <a src={item}>{item}</a>
+            </div>
+        )
+    }
+
+    Render_Links(props){
+        if(props.links){
+            return(
+                <div className="all-links">
+                    {props.links.map(this.individual_link)}
+                </div>
+            )
+        }
+        else {
+            return null;
+        }
+    }
+
     render(){
         if(this.props.character==null){
             return null;
@@ -68,6 +89,9 @@ export default class Detailed_Character_View extends Component{
                 </div>
                 <div className="description">
                         {this.props.character.description}
+                </div>
+                <div className="links">
+                        <this.Render_Links link={this.props.character.urls}/>
                 </div>
                 <div className="options">
                     {[...Object.values(this.props.option_list), back_constant].map(this.return_option)}
