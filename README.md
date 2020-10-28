@@ -7,6 +7,7 @@ React app that allows the user to create a 5-aside soccer team from Marvel Comic
 - Use `npm install` to install project dependencies
 - Use `npm start` to begin development server, etc.
 
+
 # API Key
 - Ensure that a file called `public_key.js` is created and placed in the `src` folder, with the format:
 ```
@@ -14,6 +15,19 @@ export const public_key = 'public-key-here';
 ```
 - Go to https://developer.marvel.com/ for a key
 - Only the one line is necessary for the system to work. If you'd like my public key for the API, let me know.
+
+# Usage
+- It's explained a little in the app, but you first search for characters
+- Use the buttons to search by beginning letter, or search with the search bar
+- Click on a character to bring up a detailed view
+- From there, click on what position you would like them in on your team
+- Team members are displayed at the top of the screen. Clicking on them will also bring up a detailed view
+  - From here, they can be removed if you would like
+- Social media integration doesn't work (yet), but the tweet button on the bottom will attempt to tweet a link to the Github repo
+
+# Design and Work Notes
+
+<details>
 
 # Ideas
 - Basic, keep simple, don't overthink
@@ -65,6 +79,7 @@ export const public_key = 'public-key-here';
 - Other ideas?
 - Also need to clean up the whole thing with CSS.
 
+</details>
 
 ### Default create-react-app readme
 <details>
