@@ -34,7 +34,7 @@ export default class Detailed_Character_View extends Component{
     }
 
     Render_Position(props){
-        if(props.pos != ''){
+        if(props.pos !== ''){
             return(
                 <div className="char-pos">
                 {props.pos}
@@ -49,7 +49,7 @@ export default class Detailed_Character_View extends Component{
     individual_link(item, index){
         return(
             <div key = {index} className="link">
-                <a src={item}>{item}</a>
+                <a href={item}>{item}</a>
             </div>
         )
     }
@@ -80,7 +80,7 @@ export default class Detailed_Character_View extends Component{
                     {this.props.character.name}
                 </div>
                 
-                <img className="portrait" src={this.props.character.thumbnail.path+'.'+this.props.character.thumbnail.extension}/>
+                <img className="portrait" alt={this.props.character.name} src={this.props.character.thumbnail.path+'.'+this.props.character.thumbnail.extension}/>
                 
                 <div className="description">
                         {this.props.character.description}

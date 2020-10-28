@@ -16,7 +16,8 @@ export function legal_to_include(character_list, character){
     result.legal = false;
     result.reason = "nothing";
 
-    if(character_list.count == 5){
+    //console.log(character_list.length)
+    if(character_list.length == 5){
         //not legal to have more than 5
         result.reason = "Too many team members.";
         return result;

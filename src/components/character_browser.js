@@ -82,7 +82,7 @@ export default function Character_Browser(props){
                 <label className="letter-list-name-label">
                     {item.name}
                 </label>
-                <img className="letter-list-img" data-item={item.id} src={item.thumbnail.path+'.'+item.thumbnail.extension}/>
+                <img className="letter-list-img" alt={item.name} data-item={item.id} src={item.thumbnail.path+'.'+item.thumbnail.extension}/>
             </div>
         )
     }
@@ -105,7 +105,7 @@ export default function Character_Browser(props){
             )
         }
         else if(props.res != null){
-            if(result.data.count == 0){
+            if(result.data.count === 0){
                 return(
                     <div className='letter-list-loading'>
                         No results.

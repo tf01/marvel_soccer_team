@@ -61,10 +61,6 @@ export default function Chosen_Log(props){
       }
     }
 
-    function setViewingChar(event){
-      setChar(event.target.dataset.character);
-    }
-
     //Make modal menu that appear when you click, showing more info like position,
     //description of character, etc
     function buttons(item, index){
