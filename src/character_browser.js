@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import Search_Bar from './search_bar';
 import Detailed_Character_View from './detailed_character_view';
 import {useGetCharacters, useGetCharacters_JSON_only} from './marvel_api'
 import {per_page, test} from './shared_constants';
@@ -47,6 +48,8 @@ export default function Character_Browser(props){
     const [page, setPage] = useState(0);
     const [numItemsOnCurrentPage, setNumItems] = useState(0);
     const [currentPage, setCurrentPage] = useState(null);
+
+    const [search_term, setSearch_Term] = useState('');
 
     //retrieve results 
     const {loading, result, error} = useGetCharacters_JSON_only(selected, page);
@@ -204,19 +207,17 @@ export default function Character_Browser(props){
         }
     }
 
-    function Search_Bar(){
-        return(
-            <div className="search">
-                
-            </div>
-        )
+
+    
+    function submit_search(search_term){
+        console.log(search_term)
+        setSelected(search_term);
     }
 
     return(
         <div className='character-browser'>
-            <Search_Bar/>
+            <Search_Bar submit={submit_search}/>
             <Current_View/>
-            
         </div>
     )
 }
