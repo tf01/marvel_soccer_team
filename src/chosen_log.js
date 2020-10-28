@@ -99,6 +99,7 @@ export default function Chosen_Log(props){
     //
     if(char!=null){
       return(
+        <div>
           <div className={x.join(" ")}>
           <div className="chosen-characters-element">
             <WelcomeTutorial/>
@@ -108,6 +109,8 @@ export default function Chosen_Log(props){
                                       list_action={handleRemove}
                                       character={char}/>
           </div>
+        </div>
+
       )
     }
     else {
