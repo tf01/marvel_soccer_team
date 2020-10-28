@@ -2,12 +2,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: gray;
+    /* background-color: gray; */
+    background-image: url('/src/images/tilable3.png');
     color: white;
     width: 100%;
 
     min-height: 50vh;
     height: auto;
+
+    border-color: darkgray;
+    border-style: groove;
 }
 
 .detailed-char-view{
