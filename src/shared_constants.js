@@ -8,6 +8,8 @@ export const positions = {
     DF: 'Defender',
 };
 
+export const back_constant = "Back";
+
 export const test = {
     "id": 1009371,
     "name": "Iron Monger",

@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import Search_Bar from './search_bar';
 import Detailed_Character_View from './detailed_character_view';
 import {useGetCharacters, useGetCharacters_JSON_only} from './marvel_api'
-import {per_page, positions, test} from './shared_constants';
+import {back_constant, per_page, positions, test} from './shared_constants';
 
 const labels = [
     'All',
@@ -92,7 +92,7 @@ export default function Character_Browser(props){
         for (result_index in result.data.results){
 
             //console.log(result.data.results[result_index].id);
-            console.log(event.target.dataset.item)
+            //console.log(event.target.dataset.item)
             if(result.data.results[result_index].id == event.target.dataset.item){
                 setChar(result.data.results[result_index]);
                 break;
@@ -110,7 +110,7 @@ export default function Character_Browser(props){
                 findCharacter(e);
                 }} >
                 {item.name}
-                <img src={item.thumbnail.path+'.'+item.thumbnail.extension} width='75' height='75'/>
+                <img data-item={item.id} src={item.thumbnail.path+'.'+item.thumbnail.extension} width='75' height='75'/>
             </div>
             //</tr>
         )
@@ -136,6 +136,7 @@ export default function Character_Browser(props){
     function Entered_Letter_List(props){
         //console.log(error, loading, result)
         //console.log(props.err, props.load, props.res)
+        setCurrentPage(0);
 
         if(props.err){
             return(
@@ -218,18 +219,20 @@ export default function Character_Browser(props){
 
     }
 
-    function passBackTest(character, position){
-        console.log(character);
-        console.log(position);
+    function listAction(character, position){
+        if(position !== back_constant){
+            props.add_character_to_team(position, character);
+        }
+        setChar(null);
+
     }
 
     function Current_View(){
-        if(showing_detailed){
+        if(char!=null){
             return(
                 <div>
-                <Detailed_Character_View showing={showing_detailed} 
-                                            option_list={positions} 
-                                            list_action={passBackTest}
+                <Detailed_Character_View    option_list={positions} 
+                                            list_action={listAction}
                                             character={char}/>
                 </div>
             )

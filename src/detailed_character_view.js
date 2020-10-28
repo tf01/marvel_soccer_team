@@ -1,4 +1,5 @@
 import {Component} from 'react';
+import { back_constant } from './shared_constants';
 
 
 export default class Detailed_Character_View extends Component{
@@ -15,7 +16,7 @@ export default class Detailed_Character_View extends Component{
     constructor(props){
         super(props);
 
-        console.log(this.props);
+        //console.log(this.props);
         this.buttonClicked = this.buttonClicked.bind(this);
         this.return_option = this.return_option.bind(this);
     }
@@ -34,7 +35,7 @@ export default class Detailed_Character_View extends Component{
     }
 
     render(){
-        if(!this.props.showing || this.props.character==null){
+        if(this.props.character==null){
             return null;
         }
 
@@ -58,7 +59,7 @@ export default class Detailed_Character_View extends Component{
                         {this.props.character.description}
                     </div>
                 <div className="options">
-                    {[...Object.values(this.props.option_list), "Back"].map(this.return_option)}
+                    {[...Object.values(this.props.option_list), back_constant].map(this.return_option)}
                 </div>
             </div>
         )
