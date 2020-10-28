@@ -2,7 +2,7 @@
 React app that allows the user to create a 5-aside soccer team from Marvel Comics characters.
 
 # Testing
-- Ensure that Node and npm are installed on your machine
+- Ensure that Node (developed with v12.3.1) and npm (developed with (6.9.0) are installed on your machine
 - Ensure that a valid API key is in `public_key.js` (detailed below)
 - Use `npm install` to install project dependencies
 - Use `npm start` to begin development server, etc.
