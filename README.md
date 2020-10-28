@@ -50,7 +50,13 @@ export const public_key = 'public-key-here';
 - Display detailed info
 - Share button
 - Fix up mobile representation
-- 
+
+# Further Notes
+- Things are working, now just need to do team validation
+  - I think it might be good to go for a set of default values for the buttons, that are replaced with the actual characters once selected.
+- Share button is lacking a space. Maybe at the bottom of every page would be good.
+- Other ideas?
+- Also need to clean up the whole thing with CSS.
 
 
 ### Default create-react-app readme
