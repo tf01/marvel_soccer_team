@@ -75,10 +75,12 @@ class App extends Component{
       search_string: '',
 
       tweetOptions: {},
+      tweetText: ''
     }
 
     this.add_character_to_team = this.add_character_to_team.bind(this);
     this.remove_character_from_team = this.remove_character_from_team.bind(this);
+    //this.updateTweet = this.updateTweet.bind(this);
     //this.toggleModal = this.toggleModal.bind(this);
   }
 
@@ -101,7 +103,7 @@ class App extends Component{
       alert("Could not add "+character.name+" to team. Reason: "+legality_object.reason);
     }
 
-    this.updateTweet();
+    //this.updateTweet();
   }
 
   remove_character_from_team(character){
@@ -114,7 +116,7 @@ class App extends Component{
       list: copy_of_array
     }));
 
-    this.updateTweet();
+    //this.updateTweet();
   }
 
   gotAttribution(attr){
@@ -125,25 +127,6 @@ class App extends Component{
     this.setState({goalkeeper: gk});
   }
 
-  //Update tweet string thing user may want to send with share button
-  //May not get correct state if called too early?
-  updateTweet(){
-    let tweet = 'My Team: ';
-    let index = 0;
-    for(index in this.state.list){
-      tweet = tweet + this.state.list[index].name ;
-      if(index < this.state.list){
-        tweet = tweet + ", ";
-      }
-      else{
-        tweet = tweet + ".";
-      }
-    }
-    
-    let opts = {text: tweet};
-    console.log(opts);
-    this.setState({tweetOptions: opts});
-  }
 
 
   //No need for routing in this project
@@ -167,6 +150,30 @@ class App extends Component{
         </div>
         
       )
+    }
+    
+    //Update tweet string thing user may want to send with share button
+    //May not get correct state if called too early?
+    //This does not work, need to figure out how to generate a string when the button is pressed
+    function updateTweet(state_list){
+      let tweet = 'My Team: ';
+      let index = 0;
+      for(index in state_list){
+        tweet = tweet + state_list[index].name ;
+        if(index < state_list){
+          tweet = tweet + ", ";
+        }
+        else{
+          tweet = tweet + ".";
+        }
+      }
+      
+      // let opts = {text: tweet};
+      // console.log(opts);
+      // console.log(this.state.tweetOptions);
+      // this.setState({tweetOptions: opts});
+      // this.setState({tweetText: tweet});
+      return tweet;
     }
     return(
       <div className="App">
@@ -221,7 +228,9 @@ class App extends Component{
         <footer className='footer-attr'>
           <AttributionHTML/>
           &nbsp;
-          <TwitterShareButton options={this.state.tweetOptions}/>
+          <TwitterShareButton url={githubURL} options={{
+            text: updateTweet(this.state.list),
+            }}/>
         </footer>
 
       </div>
