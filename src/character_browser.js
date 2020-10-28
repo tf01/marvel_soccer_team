@@ -62,35 +62,10 @@ export default function Character_Browser(props){
         
     }, [result]);
 
-    function handleAddToTeam(event){
-
-        //Add modal dialog in here to ask when position
-        //console.log(event.target.value)
-        //console.log(result.data.results)
-        //search through current page to find character
-        let final_index = null;
-        let result_index = null;
-        for (result_index in result.data.results){
-
-            //console.log(result.data.results[result_index].id);
-            console.log(event.target.dataset.item)
-            if(result.data.results[result_index].id == event.target.dataset.item){
-                final_index = result.data.results[result_index];
-                break;
-            }
-        }
-        //console.log(result.data.results[result_index]);
-        props.add_character_to_team('goalkeeper', final_index);
-        setSelected('');
-    }
-
     function findCharacter(event){
-        let final_index = null;
         let result_index = null;
         for (result_index in result.data.results){
 
-            //console.log(result.data.results[result_index].id);
-            //console.log(event.target.dataset.item)
             if(result.data.results[result_index].id == event.target.dataset.item){
                 setChar(result.data.results[result_index]);
                 break;
@@ -100,9 +75,7 @@ export default function Character_Browser(props){
 
     function letter_list_entry(item, index){
         
-
         return(
-            //data-item={item.id} onClick={handleAddToTeam} 
             <div className="letter-list-entry" key={index} data-item={item.id} onClick={(e) => {
                 findCharacter(e);
                 }} >
@@ -111,30 +84,10 @@ export default function Character_Browser(props){
                 </label>
                 <img className="letter-list-img" data-item={item.id} src={item.thumbnail.path+'.'+item.thumbnail.extension}/>
             </div>
-            //</tr>
         )
     }
 
-    function handlePageChange(event){
-        // console.log(event.target.name)
-        // console.log(page)
-        // console.log(numItemsOnCurrentPage)
-        // console.log(per_page)
-        if(event.target.name === 'right'){
-            if(numItemsOnCurrentPage === per_page){
-                setPage(page+1);
-            } 
-        }
-        else{
-            if(page > 0){
-                setPage(page - 1);
-            }
-        }
-    }
-
     function Entered_Letter_List(props){
-        //console.log(error, loading, result)
-        //console.log(props.err, props.load, props.res)
 
         if(props.err){
             return(
@@ -180,19 +133,15 @@ export default function Character_Browser(props){
     }
 
     function handleSelectionPaneClicked(event){
-        //console.log(event.target.name)
         setSelected(labels[event.target.name])
         setPage(0);
-        //console.log(selected)
     }
 
     function initial_selection_pane_item(item, index){
         return(
-            // <tr className='selection-pane-item'>
-                <button name={index} key={index} className='selection-pane-button' onClick={handleSelectionPaneClicked}>
-                    {item}
-                </button>
-            // </tr>
+            <button name={index} key={index} className='selection-pane-button' onClick={handleSelectionPaneClicked}>
+                {item}
+            </button>
         )
     }
 
@@ -206,6 +155,19 @@ export default function Character_Browser(props){
 
     function handleBack(){
         setSelected('');
+    }
+
+    function handlePageChange(event){
+        if(event.target.name === 'right'){
+            if(numItemsOnCurrentPage === per_page){
+                setPage(page+1);
+            } 
+        }
+        else{
+            if(page > 0){
+                setPage(page - 1);
+            }
+        }
     }
 
     function Navigation(){
@@ -250,7 +212,6 @@ export default function Character_Browser(props){
             )
         }
         else{
-            //console.log(selected)
             return(
                 <div>
                 <Navigation/>
