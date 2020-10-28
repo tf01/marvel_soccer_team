@@ -55,7 +55,7 @@
   width: 100%;
   font-size: large;
   background-color: grey;
-  opacity: 40%;
+  opacity: 65%;
   color: #ed1d24;
   padding-bottom: 1.5mm;
   padding-top: 1mm;
@@ -86,6 +86,6 @@
 
 .footer-attr:hover{
   background-color: rgb(27, 27, 27);
-  opacity: 90%;
+  opacity: 100%;
 }
 
