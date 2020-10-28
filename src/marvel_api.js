@@ -20,7 +20,6 @@ export function useGetCharacters_JSON_only(starts_with, page){
     
     useEffect(() => {
         setLoading(true);
-        //console.log(starts_with);
         if(starts_with !== ''){
             let starting_argument = starts_with;
 
@@ -41,12 +40,10 @@ export function useGetCharacters_JSON_only(starts_with, page){
             .then(function(response) {
                 if (response.ok) {
                     return response.json();
-                    //return response.toString();
                 }
                 throw new Error("Network response was not ok.")
             })
             .then(function(result) {
-                //marvel attribution text (required)
                 setResult(result);
                 setLoading(false);
             })

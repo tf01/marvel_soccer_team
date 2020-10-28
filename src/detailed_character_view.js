@@ -4,7 +4,6 @@ import { back_constant } from './shared_constants';
 
 export default class Detailed_Character_View extends Component{
     //Should accept props:
-    //current_character_list: so it knows what its dealing with
     //character: character object
     //list_action: function to remove/add current character from list, 
         //should accept char as arg
@@ -72,9 +71,6 @@ export default class Detailed_Character_View extends Component{
         if(this.props.character==null){
             return null;
         }
-
-
-        //console.log{this.props.option_list.values}
 
         return(
             <div className="detailed-char-view-wrap">
