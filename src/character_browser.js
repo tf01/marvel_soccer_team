@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import Search_Bar from './search_bar';
 import Detailed_Character_View from './detailed_character_view';
 import {useGetCharacters, useGetCharacters_JSON_only} from './marvel_api'
-import {per_page, test} from './shared_constants';
+import {per_page, positions, test} from './shared_constants';
 
 const labels = [
     'All',
@@ -49,7 +49,8 @@ export default function Character_Browser(props){
     const [numItemsOnCurrentPage, setNumItems] = useState(0);
     const [currentPage, setCurrentPage] = useState(null);
 
-    const [search_term, setSearch_Term] = useState('');
+    const [char, setChar] = useState(null);
+    const [showing_detailed, setShowingDetailed] = useState(false);
 
     //retrieve results 
     const {loading, result, error} = useGetCharacters_JSON_only(selected, page);
@@ -85,15 +86,31 @@ export default function Character_Browser(props){
         setSelected('');
     }
 
+    function findCharacter(event){
+        let final_index = null;
+        let result_index = null;
+        for (result_index in result.data.results){
+
+            //console.log(result.data.results[result_index].id);
+            console.log(event.target.dataset.item)
+            if(result.data.results[result_index].id == event.target.dataset.item){
+                setChar(result.data.results[result_index]);
+                break;
+            }
+        }
+    }
+
     function letter_list_entry(item, index){
+        
+
         return(
-            // <tr className='letter-list-row' key={index}>
-            <div className="letter-list-entry" key={index} data-item={item.id} onClick={handleAddToTeam}>
+            //data-item={item.id} onClick={handleAddToTeam} 
+            <div className="letter-list-entry" key={index} data-item={item.id} onClick={(e) => {
+                setShowingDetailed(!showing_detailed);
+                findCharacter(e);
+                }} >
                 {item.name}
                 <img src={item.thumbnail.path+'.'+item.thumbnail.extension} width='75' height='75'/>
-                <button className="letter-list-addbutton" value={item.id} >
-                    Add
-                </button>
             </div>
             //</tr>
         )
@@ -119,6 +136,7 @@ export default function Character_Browser(props){
     function Entered_Letter_List(props){
         //console.log(error, loading, result)
         //console.log(props.err, props.load, props.res)
+
         if(props.err){
             return(
                 <div className='error'>
@@ -135,19 +153,28 @@ export default function Character_Browser(props){
             )
         }
         else if(props.res != null){
-            return(
-                <div className='letter-list-table'>
-                    <button className='page-navi-left' name='left' onClick={handlePageChange}>
-                        &#60;
-                    </button>
-                    <div className='letter-list-body'>
-                        {result.data.results.map(letter_list_entry)}
+            if(result.data.count == 0){
+                return(
+                    <div className='letter-list-loading'>
+                        No results.
                     </div>
-                    <button className='page-navi-right' name='right'  onClick={handlePageChange}>
-                        &#62;
-                    </button>
-                </div>
-            )
+                )
+            }
+            else{
+                return(
+                    <div className='letter-list-table'>
+                        <button className='page-navi-left' name='left' onClick={handlePageChange}>
+                            &#60;
+                        </button>
+                        <div className='letter-list-body'>
+                            {result.data.results.map(letter_list_entry)}
+                        </div>
+                        <button className='page-navi-right' name='right'  onClick={handlePageChange}>
+                            &#62;
+                        </button>
+                    </div>
+                )
+            }
         }
         else{
             return(
@@ -187,7 +214,26 @@ export default function Character_Browser(props){
         setSelected('');
     }
 
+    function handleCharBack(){
+
+    }
+
+    function passBackTest(character, position){
+        console.log(character);
+        console.log(position);
+    }
+
     function Current_View(){
+        if(showing_detailed){
+            return(
+                <div>
+                <Detailed_Character_View showing={showing_detailed} 
+                                            option_list={positions} 
+                                            list_action={passBackTest}
+                                            character={char}/>
+                </div>
+            )
+        }
         
         if(selected === ''){
             return(

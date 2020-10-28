@@ -1,7 +1,7 @@
 .detailed-char-view-wrap{
     display: flex;
     flex-direction: column;
-
+    justify-content: space-between;
     background-color: gray;
     color: white;
 }
@@ -32,7 +32,7 @@
     align-self: flex-end;
 }
 
-.detailed-char-view .description{
+.detailed-char-view-wrap .description{
     
 }
 
