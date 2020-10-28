@@ -47,7 +47,6 @@ export default function Character_Browser(props){
     const [selected, setSelected] = useState('');
     const [page, setPage] = useState(0);
     const [numItemsOnCurrentPage, setNumItems] = useState(0);
-    const [currentPage, setCurrentPage] = useState(null);
 
     const [char, setChar] = useState(null);
     const [showing_detailed, setShowingDetailed] = useState(false);
@@ -136,7 +135,6 @@ export default function Character_Browser(props){
     function Entered_Letter_List(props){
         //console.log(error, loading, result)
         //console.log(props.err, props.load, props.res)
-        setCurrentPage(0);
 
         if(props.err){
             return(
@@ -190,6 +188,7 @@ export default function Character_Browser(props){
     function handleSelectionPaneClicked(event){
         //console.log(event.target.name)
         setSelected(labels[event.target.name])
+        setPage(0);
         //console.log(selected)
     }
 
