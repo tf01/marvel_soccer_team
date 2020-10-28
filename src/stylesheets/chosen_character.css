@@ -1,3 +1,4 @@
+/*Chosen chars pane*/
 .chosen-characters-element{
     display: flex;
     align-content: space-between;
@@ -6,8 +7,7 @@
 } 
 
 .char-button{
-    /* height: 150px;
-    width: 100px; */
+
     color: black;
     font-size: 0.5cm;
 }
@@ -20,21 +20,15 @@
     border-width: 2px;
 }
 
+/*Scrolling*/
 .chosen{
     width: 100%;
-    
-    /* transition: all .1s ease; */
-
-    
 }
 
 .scrolled{
     position: fixed;
     transform: translateZ(0);
     top: 0;
-    /* left: 0; */
-    /* background-color: white; */
-
     max-height: 30vh;
 }
 
@@ -43,8 +37,3 @@
         width:40%;
     }
 }
-
-/* .portrait{
-    max-height: 1vh;
-    max-width: 1vw;
-} */

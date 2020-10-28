@@ -1,3 +1,4 @@
+
 .detailed-char-view-wrap{
     display: flex;
     flex-direction: column;
@@ -38,10 +39,6 @@
     height: auto;
     max-height: 60vh;
     width: 65%;
-}
-
-.detailed-char-view-wrap .description{
-    
 }
 
 .detailed-char-view-wrap .options{

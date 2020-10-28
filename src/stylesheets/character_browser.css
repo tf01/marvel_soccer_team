@@ -1,11 +1,5 @@
 /* selection pane */
 
-/* .character-browser{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-} */
-
 .selection-pane-button{
   background-color: rgba(255, 255, 255, 0);
   border-color: rgba(255, 255, 255, 0);
