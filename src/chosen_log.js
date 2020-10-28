@@ -13,7 +13,7 @@ export default function Chosen_Log(props){
 
     const handleScroll=()=>{
         const scroll_d = window.scrollY;
-        if(scroll_d > 200){
+        if(scroll_d > 100){
             setScrolled(true);
         }
         else{
