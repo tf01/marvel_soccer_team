@@ -46,9 +46,6 @@ export default class Detailed_Character_View extends Component{
             <div className="detailed-char-view-wrap">
 
                 <div className="detailed-char-view">
-                    <div className="char-id">
-                        {this.props.character.id}
-                    </div>
                     <div className="char-name">
                         {this.props.character.name}
                     </div>
@@ -57,7 +54,7 @@ export default class Detailed_Character_View extends Component{
                 </div>
                 <div className="description">
                         {this.props.character.description}
-                    </div>
+                </div>
                 <div className="options">
                     {[...Object.values(this.props.option_list), back_constant].map(this.return_option)}
                 </div>

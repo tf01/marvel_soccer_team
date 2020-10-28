@@ -4,6 +4,10 @@
     justify-content: space-between;
     background-color: gray;
     color: white;
+    width: 100%;
+
+    min-height: 50vh;
+    height: auto;
 }
 
 .detailed-char-view{
@@ -12,7 +16,7 @@
     justify-content: space-around;
     text-align: center;
     align-items: center;
-    width: 100%;
+    
     flex-grow: 8;
 
 
@@ -20,16 +24,22 @@
 
 .detailed-char-view .char-id{
     padding: 5;
+    height:auto;
+    width: auto;
 }
 
 .detailed-char-view .char-name{
-    
+    height:auto;
+    width: auto;
+    padding: 15;
 }
 
 .detailed-char-view .portrait{
-    height:100px;
-    width: 100px;
-    align-self: flex-end;
+    height:auto;
+    max-height: 50vh;
+    width: auto;
+    max-width: 50vh;
+    align-self: center;
 }
 
 .detailed-char-view-wrap .description{
@@ -40,4 +50,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: stretch;;
+}
+
+.detailed-char-view-wrap .options .option-element{
+    height: auto;
+    min-height: 5vh;
+    width: auto;
+    min-width: 5vh;
 }

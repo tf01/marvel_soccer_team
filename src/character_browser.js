@@ -214,10 +214,6 @@ export default function Character_Browser(props){
         setSelected('');
     }
 
-    function handleCharBack(){
-
-    }
-
     function listAction(character, position){
         if(position !== back_constant){
             props.add_character_to_team(position, character);
