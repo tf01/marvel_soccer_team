@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import Detailed_Character_View from './detailed_character_view'
 
-import {remove_constant} from './shared_constants'
+import {remove_constant} from './../shared_constants'
 
 export default function Chosen_Log(props){
     //Scrolling stuff from here:

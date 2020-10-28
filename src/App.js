@@ -1,9 +1,9 @@
 import './stylesheets/main.css';
 import { Component } from 'react';
 
-import Character_Browser from './character_browser'
+import Character_Browser from './components/character_browser'
 import { useGetCharacters_JSON_only } from './marvel_api';
-import Chosen_Log from './chosen_log';
+import Chosen_Log from './components/chosen_log';
 import {legal_to_include} from './team_management';
 
 import {TwitterShareButton} from 'react-twitter-embed';
