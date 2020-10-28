@@ -73,6 +73,7 @@ class App extends Component{
     }
 
     this.add_character_to_team = this.add_character_to_team.bind(this);
+    this.remove_character_from_team = this.remove_character_from_team.bind(this);
     //this.toggleModal = this.toggleModal.bind(this);
   }
 
@@ -83,18 +84,20 @@ class App extends Component{
   }
 
   add_character_to_team(position, character){
-    console.log(position);
-    console.log(character);
-    // var stateObj = function() {
-    //   let retObj = {};
-    //   retObj[position] = character;
-    //   return retObj;
-    // }.bind(position, character)();
-    // //state[position] = character;
-    // this.setState(stateObj);
     character.position = position;
     this.setState(prevState => ({
       list: [...prevState.list, character]
+    }));
+  }
+
+  remove_character_from_team(character){
+    //remove selected character from the team list
+    const index = this.state.list.indexOf(character);
+    let copy_of_array = [...this.state.list];
+    copy_of_array.splice(index, 1);
+
+    this.setState(prevState => ({
+      list: copy_of_array
     }));
   }
 
@@ -149,7 +152,9 @@ class App extends Component{
           Marvel Character 5-side Soccer Team Selector
         </div>
           <div className="chosen-characters">
-            <Chosen_Log list={this.state.list}/>
+            <Chosen_Log list={this.state.list}
+            remove_character_from_team={this.remove_character_from_team}
+            />
             {/* <Chosen_Characters goa={this.state['goalkeeper']}
                                 str={this.state['striker']}
                                 mid={this.state['midfielder']}

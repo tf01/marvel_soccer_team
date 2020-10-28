@@ -9,6 +9,7 @@ export const positions = {
 };
 
 export const back_constant = "Back";
+export const remove_constant = "Remove";
 
 export const test = {
     "id": 1009371,

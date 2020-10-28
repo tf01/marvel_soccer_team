@@ -1,10 +1,15 @@
 import {useEffect, useState} from 'react'
+import Detailed_Character_View from './detailed_character_view'
+
+import {remove_constant} from './shared_constants'
 
 export default function Chosen_Log(props){
-
     //Scrolling stuff from here:
     //https://dev.to/dalalrohit/sticky-navbar-from-scratch-using-react-37d5
     const [scrolled,setScrolled] = useState(false);
+
+    //Setting up detailed view like in browser
+    const [char, setChar] = useState(null);
 
     const handleScroll=()=>{
         const scroll_d = window.scrollY;
@@ -38,6 +43,28 @@ export default function Chosen_Log(props){
       }
     }
 
+    //copied from browser, should probably be in a different file
+    function findCharacter(event){
+      if(char != null){
+        if(char.id == event.target.dataset.item){
+          setChar(null);
+          return;
+        }
+      }
+      let result_index = null;
+      for (result_index in props.list){
+
+          if(props.list[result_index].id == event.target.dataset.item){
+              setChar(props.list[result_index]);
+              break;
+          }
+      }
+    }
+
+    function setViewingChar(event){
+      setChar(event.target.dataset.character);
+    }
+
     //Make modal menu that appear when you click, showing more info like position,
     //description of character, etc
     function buttons(item, index){
@@ -46,7 +73,7 @@ export default function Chosen_Log(props){
           {/* <button className="char-button" value={index}>
             {item.name} */}
             <div className="char-button">
-              <img src={item.thumbnail.path+'.'+item.thumbnail.extension} alt={item.name}/>
+              <img onClick={findCharacter} data-item={item.id} src={item.thumbnail.path+'.'+item.thumbnail.extension} alt={item.name}/>
             </div>
             {/* {item.position}
           </button> */}
@@ -60,12 +87,38 @@ export default function Chosen_Log(props){
     if(scrolled){
         x.push('scrolled');
     }
-    return(
+
+    //consider adding functionality to swap to an open position on the team
+    function handleRemove(character, option){
+      if(option === remove_constant){
+        props.remove_character_from_team(character)
+      }
+      setChar(null);
+    }
+
+    //
+    if(char!=null){
+      return(
+          <div className={x.join(" ")}>
+          <div className="chosen-characters-element">
+            <WelcomeTutorial/>
+            {props.list.map(buttons)}
+          </div>
+          <Detailed_Character_View    option_list={[remove_constant]} 
+                                      list_action={handleRemove}
+                                      character={char}/>
+          </div>
+      )
+    }
+    else {
+      return(
         <div className={x.join(" ")}>
             <div className="chosen-characters-element">
               <WelcomeTutorial/>
               {props.list.map(buttons)}
             </div>
         </div>
-    )
+      )
+    }
+
 }

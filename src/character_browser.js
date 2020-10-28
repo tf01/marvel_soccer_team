@@ -49,7 +49,6 @@ export default function Character_Browser(props){
     const [numItemsOnCurrentPage, setNumItems] = useState(0);
 
     const [char, setChar] = useState(null);
-    const [showing_detailed, setShowingDetailed] = useState(false);
 
     //retrieve results 
     const {loading, result, error} = useGetCharacters_JSON_only(selected, page);
@@ -105,7 +104,6 @@ export default function Character_Browser(props){
         return(
             //data-item={item.id} onClick={handleAddToTeam} 
             <div className="letter-list-entry" key={index} data-item={item.id} onClick={(e) => {
-                setShowingDetailed(!showing_detailed);
                 findCharacter(e);
                 }} >
                 {item.name}

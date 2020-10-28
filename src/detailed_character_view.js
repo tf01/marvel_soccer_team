@@ -34,6 +34,19 @@ export default class Detailed_Character_View extends Component{
         )
     }
 
+    Render_Position(props){
+        if(props.pos != ''){
+            return(
+                <div className="char-pos">
+                {props.pos}
+                </div>
+            )
+        }
+        else{
+            return null;
+        }
+    }
+
     render(){
         if(this.props.character==null){
             return null;
@@ -46,6 +59,7 @@ export default class Detailed_Character_View extends Component{
             <div className="detailed-char-view-wrap">
 
                 <div className="detailed-char-view">
+                    <this.Render_Position pos={this.props.character.position}/>
                     <div className="char-name">
                         {this.props.character.name}
                     </div>
