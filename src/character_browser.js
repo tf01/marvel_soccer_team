@@ -106,8 +106,10 @@ export default function Character_Browser(props){
             <div className="letter-list-entry" key={index} data-item={item.id} onClick={(e) => {
                 findCharacter(e);
                 }} >
-                {item.name}
-                <img data-item={item.id} src={item.thumbnail.path+'.'+item.thumbnail.extension} width='75' height='75'/>
+                <label className="letter-list-name-label">
+                    {item.name}
+                </label>
+                <img className="letter-list-img" data-item={item.id} src={item.thumbnail.path+'.'+item.thumbnail.extension}/>
             </div>
             //</tr>
         )
@@ -160,15 +162,9 @@ export default function Character_Browser(props){
             else{
                 return(
                     <div className='letter-list-table'>
-                        <button className='page-navi-left' name='left' onClick={handlePageChange}>
-                            &#60;
-                        </button>
                         <div className='letter-list-body'>
                             {result.data.results.map(letter_list_entry)}
                         </div>
-                        <button className='page-navi-right' name='right'  onClick={handlePageChange}>
-                            &#62;
-                        </button>
                     </div>
                 )
             }
@@ -212,6 +208,23 @@ export default function Character_Browser(props){
         setSelected('');
     }
 
+    function Navigation(){
+        return(
+            <div className="letter_list_navi">
+                <button className='page-navi-left' name='left' onClick={handlePageChange}>
+                &#60;
+                </button>
+                <button className="back-button-browser" onClick={handleBack}>
+                    Back
+                </button>
+                <button className='page-navi-right' name='right'  onClick={handlePageChange}>
+                &#62;
+                </button>
+            </div>
+
+        )
+    }
+
     function listAction(character, position){
         if(position !== back_constant){
             props.add_character_to_team(position, character);
@@ -240,10 +253,9 @@ export default function Character_Browser(props){
             //console.log(selected)
             return(
                 <div>
-                <button className="back-button-browser" onClick={handleBack}>
-                    Back
-                </button>
+                <Navigation/>
                 <Entered_Letter_List err={error} load={loading} res={result}/>
+                <Navigation/>
                 </div>
             )
         }
